@@ -1,30 +1,11 @@
 FROM spacedgap/centos:6-remi-php5.6
 
+# Start as root
+USER root
+
 # Install Libraries and Packages
 RUN yum -y install \
-        autoconf \
-        dpkg-dev \
-        file \
-        gcc-c++ \
-        gcc \
-        glibc-devel \
-        make \
-        pkgconfig \
-        re2c \
-        ca-certificates \
-        curl \
-        tar \
-        xz \
-        openssl \
-        wget \
-        libargon2-devel \
-        libedit-devel \
-        libsodium-devel \
-        libsqlite3x-devel \
-        openssl-devel \
-        libxml2-devel \
-        zlib-devel \
-        # PHP
+        ## PHP Libraries
         php-cli \
         php-common \
         php-pear \
@@ -47,6 +28,8 @@ RUN yum clean all && \
 
 COPY ./scripts/entrypoint/docker-php-entrypoint /usr/local/bin/
 
-#ENTRYPOINT ["/usr/bin/tini", "--", "docker-php-entrypoint"]
+RUN chmod 755 /usr/local/bin/docker-php-entrypoint
+
+ENTRYPOINT ["/usr/bin/tini", "--", "docker-php-entrypoint"]
 
 CMD ["php", "-a"]

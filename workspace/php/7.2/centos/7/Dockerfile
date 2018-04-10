@@ -1,5 +1,8 @@
 FROM spacedgap/php:7.2-cli-centos7
 
+# Start as root
+USER root
+
 #
 #--------------------------------------------------------------------------
 # Software's Installation
@@ -8,6 +11,33 @@ FROM spacedgap/php:7.2-cli-centos7
 
 # Install "PHP Extentions", "libraries", "Software's"
 RUN yum -y install \
+        ## Build Essentials
+        autoconf \
+        dpkg-dev dpkg \
+        file \
+        gcc-c++ \
+        gcc \
+        glibc-devel \
+        make \
+        pkgconfig \
+        re2c \
+        ## Persitent / Runtime Deps
+        ca-certificates \
+        curl \
+        tar \
+        xz \
+        openssl \
+        wget \
+        ## Build Essentials Library
+        libcurl-devel \
+        libedit-devel \
+        openssl-devel \
+        libxml2-devel \
+        libargon2-devel \
+        libsodium-devel \
+        zlib-devel \
+        sqlite-devel \
+        ## PHP Libraries
         php \
         php-bcmath \
         php-intl \
