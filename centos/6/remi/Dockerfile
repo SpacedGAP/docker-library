@@ -14,6 +14,7 @@ RUN yum -y update && \
     yum -y install \
         https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
         https://rpms.remirepo.net/enterprise/remi-release-6.rpm \
+        yum-utils \
     && \
     yum clean all && \
     rm -rf \
