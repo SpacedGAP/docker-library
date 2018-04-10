@@ -47,6 +47,6 @@ RUN yum clean all && \
 
 COPY ./scripts/entrypoint/docker-php-entrypoint /usr/local/bin/
 
-ENTRYPOINT ["/usr/bin/tini", "--", "docker-php-entrypoint"]
+#ENTRYPOINT ["/usr/bin/tini", "--", "docker-php-entrypoint"]
 
 CMD ["php", "-a"]
